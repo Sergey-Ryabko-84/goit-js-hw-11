@@ -10,16 +10,16 @@ const API_KEY = '30719665-02331968f49df94435bfd7c2d';
 const per_page = 40;
 
 export async function fetchGallery (searchQuery, pageNumber) {
-    const params = new URLSearchParams({
-        key: API_KEY,
-        q: searchQuery,
-        image_type: 'photo',
-        orientation: 'horizontal',
-        safesearch: true,
-        per_page: per_page,
-        page: pageNumber,
-    });
     try {
+        const params = new URLSearchParams({
+            key: API_KEY,
+            q: searchQuery,
+            image_type: 'photo',
+            orientation: 'horizontal',
+            safesearch: true,
+            per_page: per_page,
+            page: pageNumber,
+        });
         const response = await axios.get(`${BASE_URL}?${params}`);
         const totalHits = response.data.totalHits;        
         if (totalHits > 0) {
